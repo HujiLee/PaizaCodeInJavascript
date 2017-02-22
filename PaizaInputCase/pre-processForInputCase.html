@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预处理Paiza提供的输入用例</title>
+    <style>
+        button{
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<button id="clear"  style="width: 100%;min-height: 20px;">清空!</button>
+<textarea id="raw" style="width: 100%;min-height: 40vh;background-color: antiquewhite">
+    </textarea>
+<button onclick="change()" style="width: 100%;min-height: 20px;">转换!</button>
+
+<textarea readonly="readonly" id="target" style="width: 100%;min-height: 50vh;background-color: #a0a2ff"></textarea>
+</body>
+<script>
+    function change() {
+        var raw = document.querySelector("#raw").value.split("\n");
+        document.querySelector("#target").value="";
+        for(var i in raw){
+            raw[i]=raw[i].trim();
+            if(raw[i]!==''){
+                document.querySelector("#target").value+=("\""+raw[i]+"\",\n");
+            }
+
+        }
+        document.querySelector("#target").value+="Null";
+        document.querySelector("#target").value=document.querySelector("#target").value.replace(",\nNull",'');
+
+    }
+    document.querySelector("#clear").addEventListener("click",function () {
+        document.querySelector("#raw").value=' ';
+        console.log("233")
+    });
+
+</script>
+</html>
